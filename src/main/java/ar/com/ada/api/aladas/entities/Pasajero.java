@@ -15,6 +15,9 @@ public class Pasajero extends Persona {
     @OneToMany(mappedBy = "pasajero", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reserva> reservas = new ArrayList<>();
 
+    @OneToOne(mappedBy = "pasajero", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Usuario usuario;
+
     //getters y setters
 
     public Integer getPasajeroId() {

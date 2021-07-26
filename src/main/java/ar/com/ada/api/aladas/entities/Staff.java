@@ -11,6 +11,9 @@ public class Staff extends Persona {
     @Column(name = "staff_id")
     private Integer staffId;
 
+    @OneToOne(mappedBy = "staff", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Usuario usuario;
+
     //getters y setters
 
     public Integer getStaffId() {
