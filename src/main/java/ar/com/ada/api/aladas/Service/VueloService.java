@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.aladas.entities.Aeropuerto;
 import ar.com.ada.api.aladas.entities.Vuelo;
+import ar.com.ada.api.aladas.entities.Vuelo.EstadoVueloEnum;
 import ar.com.ada.api.aladas.repos.VueloRepository;
 
 @Service
@@ -20,6 +21,8 @@ public class VueloService {
     private AeropuertoService aeropService;
 
     public void crear(Vuelo vuelo) {
+
+        vuelo.setEstadoVueloId(EstadoVueloEnum.GENERADO);
         repo.save(vuelo);
     }
 
@@ -64,7 +67,7 @@ public class VueloService {
         if (vuelo.getPrecio() == null) {
             return false;
         }
-        if (vuelo.getPrecio().doubleValue() < 0)
+        if (vuelo.getPrecio().doubleValue() > 0)
             return true;
 
         return false;

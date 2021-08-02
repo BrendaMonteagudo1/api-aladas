@@ -1,5 +1,6 @@
 package ar.com.ada.api.aladas;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -11,8 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import ar.com.ada.api.aladas.Service.AeropuertoService;
 import ar.com.ada.api.aladas.Service.VueloService;
+import ar.com.ada.api.aladas.Service.VueloService.ValidacionVueloDataEnum;
 import ar.com.ada.api.aladas.entities.Aeropuerto;
 import ar.com.ada.api.aladas.entities.Vuelo;
+import ar.com.ada.api.aladas.entities.Vuelo.EstadoVueloEnum;
 
 @SpringBootTest
 class AladasApplicationTests {
@@ -132,6 +135,18 @@ class AladasApplicationTests {
 	void aeropuertoTestBuscadorIATA() {
 
 	}
+
+	@Test
+	void vueloValidarVueloMismoDestionoUsandoGeneral() {
+		Vuelo vuelo = new Vuelo();
+		vuelo.setPrecio(new BigDecimal(1000));
+		vuelo.setEstadoVueloId(EstadoVueloEnum.GENERADO);
+		vuelo.setAeropuertoOrigen(116);
+		vuelo.setAeropuertoDestino(116);
+
+		assertEquals(ValidacionVueloDataEnum.ERROR_AEROPUERTOS_IGUALES, vueloService.validar(vuelo));
+	}
+
 
 }
 
