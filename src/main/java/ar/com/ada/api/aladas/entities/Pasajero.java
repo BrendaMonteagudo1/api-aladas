@@ -19,7 +19,7 @@ public class Pasajero extends Persona {
     private Usuario usuario;
 
     //getters y setters
-
+    
     public Integer getPasajeroId() {
         return pasajeroId;
     }
@@ -28,9 +28,28 @@ public class Pasajero extends Persona {
         this.pasajeroId = pasajeroId;
     }
 
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        usuario.setPasajero(this);
+    }
+
     public void agregarReserva(Reserva reserva) {
         this.reservas.add(reserva);
         reserva.setPasajero(this); //relacion bidireccional
     }
 
 }
+
+

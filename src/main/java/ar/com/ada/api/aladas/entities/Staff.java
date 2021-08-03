@@ -24,4 +24,9 @@ public class Staff extends Persona {
         this.staffId = staffId;
     }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+        usuario.setStaff(this);
+    }
+
 }

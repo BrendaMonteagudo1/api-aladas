@@ -21,6 +21,8 @@ public class Pasaje {
     @Column(name = "info_pago")
     private String infoPago;
 
+    // getters y setters
+
     public Integer getPasajeId() {
         return pasajeId;
     }
