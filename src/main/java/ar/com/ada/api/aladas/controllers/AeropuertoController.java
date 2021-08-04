@@ -1,5 +1,7 @@
 package ar.com.ada.api.aladas.controllers;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,7 @@ public class AeropuertoController {
         GenericResponse respuesta = new GenericResponse();
 
         service.crear(aeropuerto.getAeropuertoId(), aeropuerto.getNombre(), aeropuerto.getCodigoIATA());
+      //  if (aeropuerto.getAeropuertoId()== service.existeId(aeropuerto))
 
         respuesta.isOk = true;
         respuesta.message = "Se creo correctamente";

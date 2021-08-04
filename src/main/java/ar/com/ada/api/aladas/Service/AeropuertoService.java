@@ -54,4 +54,10 @@ public class AeropuertoService {
         return true;
 
     }
+
+    public boolean existeId(Integer aeropuertoId) {
+        Aeropuerto aeropuerto = repo.findByAeropuertoId(aeropuertoId);
+        return aeropuerto != null;
+    }
+
 }
