@@ -25,7 +25,7 @@ public class Usuario {
     @Column(name = "fecha_login")
     private Date fechaLogin;
 
-    @Column(name = "tipo_usuario")
+    @Column(name = "tipo_usuario_id")
     private Integer tipoUsuario;
 
     @OneToOne
@@ -101,6 +101,11 @@ public class Usuario {
 
     }
 
+    public Integer obtenerEntityId() {
+        // TODO, segun el tipo de usuario, devolver el pasajeroId o staffId o nada!
+        return null;
+    }
+
     public enum TipoUsuarioEnum {
         STAFF(1), PASAJERO(2);
 
@@ -126,4 +131,5 @@ public class Usuario {
             return status;
         }
     }
+
 }
