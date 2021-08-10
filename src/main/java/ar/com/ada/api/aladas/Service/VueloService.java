@@ -79,7 +79,9 @@ public class VueloService {
          * if(vuelo.getAeropuertoDestino() != vuelo.getAeropuertoOrigen()) return true;
          * else return false;
          */
-        return vuelo.getAeropuertoDestino() != vuelo.getAeropuertoOrigen();
+        return vuelo.getAeropuertoDestino().intValue() != vuelo.getAeropuertoOrigen().intValue();
+        // se agrega intValue() ya que el interger es un objeto, por ende al tener = y no ser un numero entero
+        // tomaba la posicion y no el valor del int.
 
     }
 
