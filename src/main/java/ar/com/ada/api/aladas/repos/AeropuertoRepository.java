@@ -10,4 +10,6 @@ public interface AeropuertoRepository extends JpaRepository<Aeropuerto, Integer>
     Aeropuerto findByCodigoIATA(String codigoIATA);
     
     Aeropuerto findByAeropuertoId(Integer aeropuertoId);
+
+ 
 }

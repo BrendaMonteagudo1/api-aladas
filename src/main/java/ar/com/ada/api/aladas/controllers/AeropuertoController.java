@@ -23,8 +23,14 @@ public class AeropuertoController {
         GenericResponse respuesta = new GenericResponse();
 
         service.crear(aeropuerto.getAeropuertoId(), aeropuerto.getNombre(), aeropuerto.getCodigoIATA());
-      //  if (aeropuerto.getAeropuertoId()== service.existeId(aeropuerto))
+        // if (aeropuerto.getAeropuertoId()== service.existeId(aeropuerto))
 
+        if (service.existeIdV2(aeropuerto.getAeropuertoId())== true) {
+
+            respuesta.isOk = false;
+            respuesta.message = "El Id ingresado ya se encuentra en uso";
+            return ResponseEntity.badRequest().body(respuesta);
+        }
         respuesta.isOk = true;
         respuesta.message = "Se creo correctamente";
         respuesta.id = aeropuerto.getAeropuertoId();
