@@ -94,6 +94,22 @@ public class VueloController {
         return ResponseEntity.ok(service.traerVuelosAbiertos());
     }
 
+    public ResponseEntity<Vuelo> getVueloPorId(@PathVariable Integer id){
+        Vuelo vuelo = service.buscarPorId(id);
+        return ResponseEntity.ok(vuelo);
+    }
+
+
+    public ResponseEntity<List<Vuelo>> getVueloPorOrigen(@PathVariable Integer aeropuerto_origen){
+        List<Vuelo> vuelo = service.buscarOrigen(aeropuerto_origen);
+        return ResponseEntity.ok(vuelo);
+    }
+
+    public ResponseEntity<List<Vuelo>> getVueloPorDestino(@PathVariable Integer aeropuerto_destino){
+        List<Vuelo> vuelo = service.buscarDestino(aeropuerto_destino);
+        return ResponseEntity.ok(vuelo);
+    }
+
 }
 
 

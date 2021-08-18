@@ -103,5 +103,13 @@ public class VueloService {
     public List<Vuelo> traerVuelosAbiertos() {
         return repo.findByEstadoVueloId(EstadoVueloEnum.ABIERTO.getValue());
     }
+
+    public List<Vuelo> buscarOrigen(Integer aeropuerto_origen) {
+        return repo.findByAeropuertoOrigen(aeropuerto_origen);
+    }
+
+    public List<Vuelo> buscarDestino(Integer aeropuerto_destino) {
+        return repo.findByAeropuertoDestino(aeropuerto_destino);
+    }
 }
 
