@@ -2,13 +2,17 @@ package ar.com.ada.api.aladas.controllers;
 
 import java.util.List;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
 
 import ar.com.ada.api.aladas.Service.AeropuertoService;
 import ar.com.ada.api.aladas.Service.VueloService.ValidacionVueloDataEnum;
 import ar.com.ada.api.aladas.entities.Aeropuerto;
+import ar.com.ada.api.aladas.entities.Usuario;
 import ar.com.ada.api.aladas.entities.Vuelo;
 import ar.com.ada.api.aladas.models.request.EstadoVueloRequest;
 import ar.com.ada.api.aladas.models.response.GenericResponse;
@@ -24,6 +28,8 @@ public class VueloController {
     private ar.com.ada.api.aladas.Service.VueloService service;
 
     private ar.com.ada.api.aladas.Service.AeropuertoService aeropuertoService;
+
+    private ar.com.ada.api.aladas.Service.UsuarioService usuarioService;
 
     public VueloController(ar.com.ada.api.aladas.Service.VueloService service, AeropuertoService aeropuertoService) {
         this.service = service;
@@ -90,7 +96,6 @@ public class VueloController {
 
     @GetMapping("/api/vuelos/abiertos")
     public ResponseEntity<List<Vuelo>> getVuelosAbiertos(){
-        
         return ResponseEntity.ok(service.traerVuelosAbiertos());
     }
 
@@ -105,12 +110,23 @@ public class VueloController {
         List<Vuelo> vuelo = service.buscarOrigen(aeropuerto_origen);
         return ResponseEntity.ok(vuelo);
     }
+
     @GetMapping("api/vuelos/aeropuertos?destino=true")
     public ResponseEntity<List<Vuelo>> getVueloPorDestino(@PathVariable Integer aeropuerto_destino){
         List<Vuelo> vuelo = service.buscarDestino(aeropuerto_destino);
         return ResponseEntity.ok(vuelo);
     }
+   
 
+
+
+    @GetMapping("api/vuelos/{id}/estadov2")
+    @PreAuthorize("hasAuthority('CLAIM_userType_STAFF')") //Spring expression language
+    public ResponseEntity<?> getEstadoVueloV2(@PathVariable Integer id){
+      
+        Vuelo vuelo = service.buscarPorId(id);
+        return ResponseEntity.ok(vuelo.getEstadoVueloId());
+    }
 }
 
 
