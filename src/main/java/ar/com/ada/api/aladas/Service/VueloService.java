@@ -104,12 +104,12 @@ public class VueloService {
         return repo.findByEstadoVueloId(EstadoVueloEnum.ABIERTO.getValue());
     }
 
-    public List<Vuelo> buscarOrigen(Integer aeropuerto_origen) {
-        return repo.findByAeropuertoOrigen(aeropuerto_origen);
+    public List<Vuelo> buscarOrigen(Integer id) {
+        return repo.findByAeropuertoOrigen(id);
     }
 
-    public List<Vuelo> buscarDestino(Integer aeropuerto_destino) {
-        return repo.findByAeropuertoDestino(aeropuerto_destino);
+    public List<Vuelo> buscarDestino(Integer id) {
+        return repo.findByAeropuertoDestino(id);
     }
 }
 

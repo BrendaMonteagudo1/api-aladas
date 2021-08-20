@@ -105,15 +105,15 @@ public class VueloController {
         return ResponseEntity.ok(vuelo);
     }
 
-    @GetMapping("api/vuelos/aeropuertos_origen")
-    public ResponseEntity<List<Vuelo>> getVueloPorOrigen(@PathVariable Integer aeropuerto_origen){
-        List<Vuelo> vuelo = service.buscarOrigen(aeropuerto_origen);
+    @GetMapping("api/vuelos/aeropuertos/{id}")
+    public ResponseEntity<List<Vuelo>> getVueloPorOrigen(@PathVariable Integer id){
+        List<Vuelo> vuelo = service.buscarOrigen(id);
         return ResponseEntity.ok(vuelo);
     }
 
-    @GetMapping("api/vuelos/aeropuertos?destino=true")
-    public ResponseEntity<List<Vuelo>> getVueloPorDestino(@PathVariable Integer aeropuerto_destino){
-        List<Vuelo> vuelo = service.buscarDestino(aeropuerto_destino);
+    @GetMapping("api/vuelos/V2/{id}")
+    public ResponseEntity<List<Vuelo>> getVueloPorDestino(@PathVariable Integer id){
+        List<Vuelo> vuelo = service.buscarDestino(id);
         return ResponseEntity.ok(vuelo);
     }
    
