@@ -10,6 +10,7 @@ import ar.com.ada.api.aladas.entities.Reserva;
 import ar.com.ada.api.aladas.entities.Reserva.EstadoReservaEnum;
 import ar.com.ada.api.aladas.entities.Vuelo.EstadoVueloEnum;
 import ar.com.ada.api.aladas.repos.PasajeRepository;
+import ar.com.ada.api.aladas.sistema.comm.EmailService;
 
 @Service
 public class PasajeService {
@@ -22,6 +23,9 @@ public class PasajeService {
 
     @Autowired
     VueloService vueloService;
+
+    @Autowired
+    EmailService emailService;
 
     public Pasaje emitir(Integer reservaId) {
 
@@ -49,7 +53,7 @@ public class PasajeService {
         vueloService.actualizar(reserva.getVuelo());
         // reservaService.actualizar(reserva);
         // pasajeService.actualizar(pasa);
-
+      
         return pasaje;
 
     }
