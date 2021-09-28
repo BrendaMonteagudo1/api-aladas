@@ -25,7 +25,7 @@ public class AeropuertoController {
         service.crear(aeropuerto.getAeropuertoId(), aeropuerto.getNombre(), aeropuerto.getCodigoIATA());
         // if (aeropuerto.getAeropuertoId()== service.existeId(aeropuerto))
 
-        if (service.existeIdV2(aeropuerto.getAeropuertoId())== true) {
+        if (service.validarAeropuertoIdExisteV2(aeropuerto.getAeropuertoId())== true) {
 
             respuesta.isOk = false;
             respuesta.message = "El Id ingresado ya se encuentra en uso";
